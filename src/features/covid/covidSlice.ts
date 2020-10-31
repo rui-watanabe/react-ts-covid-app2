@@ -3,7 +3,7 @@ import axios from "axios";
 import { RootState } from "../../app/store";
 import dataDaily from "./apiDataDaily.json";
 
-const apiUrl = "https://api.covid19api.com/total/country/";
+const apiUrl = "https://api.covid19api.com/total/country";
 
 type DATADAILY = typeof dataDaily;
 
@@ -14,17 +14,18 @@ type covidState = {
 
 const initialState: covidState = {
   daily: dataDaily,
-  country: "",
+  country: "Japan",
 };
 
 export const fetchAsyncGetDaily = createAsyncThunk(
   "covid/getDaily",
   async (country: string) => {
-    let dynamicUrl = apiUrl;
-    if (country) {
-      dynamicUrl = `${apiUrl}/${country}`;
-    }
-    const { data } = await axios.get<DATADAILY>(dynamicUrl);
+    // let dynamicUrl = apiUrl;
+    // if (country) {
+    //   dynamicUrl = `${apiUrl}/${country}`;
+    // }
+    console.log(country);
+    const { data } = await axios.get<DATADAILY>(`${apiUrl}/${country}`);
     return { data: data, country: country };
   }
 );
