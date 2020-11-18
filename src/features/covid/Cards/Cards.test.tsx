@@ -19,10 +19,12 @@ describe("Redux Integration Test", () => {
       }
     })
   });
-  it("Should render text that Infected persons", () => {
+  it("Should render innerText", () => {
     render(<Provider store={store}>
       <Cards />
     </Provider>);
     expect(screen.getByText("Infected persons")).toBeTruthy();
+    expect(screen.getByText("Recovered persons")).toBeTruthy();
+    expect(screen.getByText("Dead persons")).toBeTruthy();
   })
 })
