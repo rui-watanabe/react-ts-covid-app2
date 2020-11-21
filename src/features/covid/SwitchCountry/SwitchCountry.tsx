@@ -39,7 +39,6 @@ const SwitchCountry: React.FC = () => {
           dispatch(fetchAsyncGetDaily(e.target.value))
         }
       >
-        <option value="">Worldwide</option>
         {countries.map((country, i) => (
           <option key={i} value={country}>
             {country}
